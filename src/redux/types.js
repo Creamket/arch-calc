@@ -1,0 +1,1 @@
+export const CHANGE_VALUE = 'BEAM/CHANGE_VALUE'
