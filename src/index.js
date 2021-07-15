@@ -1,15 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { compose, createStore, applyMiddleware } from 'redux'
+import reportWebVitals from './reportWebVitals'
+import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
 import './index.css'
 import App from './App'
-import reportWebVitals from './reportWebVitals'
-import { compose, createStore } from 'redux'
-import { Provider } from 'react-redux'
-import { rooReducer } from './redux/rootReducer'
+import { rootReducer } from './redux/rootReducer'
 
 const store = createStore(
-  rooReducer,
-  compose(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+  rootReducer,
+  compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 )
 
 const app = (

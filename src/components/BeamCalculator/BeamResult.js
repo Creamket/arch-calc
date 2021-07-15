@@ -1,18 +1,45 @@
 import { connect } from 'react-redux'
-import { changeValue } from '../../redux/actions'
+import { calcResult } from '../../redux/actions'
 
-const BeamResult = ({ result, changeValue, heightH, layerC, loadQ, lengthL, Rb, widthB, Rs, armatureN, scheme }) => {
+const BeamResult = ({
+  result,
+  calcResult,
+  heightH,
+  layerC,
+  loadQ,
+  lengthL,
+  Rb,
+  widthB,
+  Rs,
+  armatureN,
+  scheme,
+  tableValues,
+}) => {
   const resultHandler = () => {
     switch (scheme) {
       case 1:
+        const newLoadQ = loadQ + widthB * heightH * 2500
         const h0 = heightH - layerC
-        const M = (loadQ * lengthL * lengthL) / 8
+        const M = (newLoadQ * lengthL * lengthL) / 8
         const As = (0.9 * Rb * widthB * (1 - Math.sqrt(1 - 2 * (M / (Rb * widthB * h0 * h0)))) * h0) / Rs
-        const newResult = (As * 10000) / armatureN
-        changeValue(['result'], newResult)
+        const area = (As * 10000) / armatureN
+        let diameter
+        let weight
+        for (let i = 0; i < tableValues.length; i++) {
+          if (area <= tableValues[i][armatureN]) {
+            diameter = tableValues[i][0] + ' мм'
+            weight = tableValues[i][11] + ' кг'
+            break
+          } else if (i === tableValues.length - 1) {
+            diameter = 'более 40 мм'
+            weight = 'неизвестно'
+            break
+          }
+        }
+        calcResult(area, diameter, weight)
         break
       default:
-        changeValue(['result'], 'Лоле')
+        calcResult(0, 0, 0)
         break
     }
   }
@@ -23,9 +50,19 @@ const BeamResult = ({ result, changeValue, heightH, layerC, loadQ, lengthL, Rb, 
         <div className='card-body'>
           <h5 className='card-title'>Результат:</h5>
           <div className='row'>
-            <div className='col-12'>{result}</div>
+            <div className='col-12'>
+              {result.area === 0 ? (
+                result.defaultMessage
+              ) : (
+                <>
+                  Площадь поперечного сечения: {+result.area.toFixed(4)} см² <br />
+                  Диаметр стержней: {result.diameter} <br />
+                  Теоретический вес 1 метра: {result.weight}
+                </>
+              )}
+            </div>
             <div className='col mt-2'>
-              <button type='button' class='btn btn-success' onClick={resultHandler}>
+              <button type='button' className='btn btn-success' onClick={resultHandler}>
                 Подсчитать!
               </button>
             </div>
@@ -48,11 +85,12 @@ const mapStateToProps = (state) => {
     Rs: state.beam.armatureType,
     result: state.beam.result,
     armatureN: state.beam.armatureBelow,
+    tableValues: state.beam.tableValues,
   }
 }
 
 const mapDispatchToProps = {
-  changeValue,
+  calcResult,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BeamResult)
