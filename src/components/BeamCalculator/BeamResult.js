@@ -23,19 +23,9 @@ const BeamResult = ({
         const M = (newLoadQ * lengthL * lengthL) / 8
         const As = (0.9 * Rb * widthB * (1 - Math.sqrt(1 - 2 * (M / (Rb * widthB * h0 * h0)))) * h0) / Rs
         const area = (As * 10000) / armatureN
-        let diameter
-        let weight
-        for (let i = 0; i < tableValues.length; i++) {
-          if (area <= tableValues[i][armatureN]) {
-            diameter = tableValues[i][0] + ' мм'
-            weight = tableValues[i][11] + ' кг'
-            break
-          } else if (i === tableValues.length - 1) {
-            diameter = 'более 40 мм'
-            weight = 'неизвестно'
-            break
-          }
-        }
+        const selectionValues = tableValues.filter((row) => area <= row[armatureN])[0] || ['более 40', '—']
+        const diameter = selectionValues[0]
+        const weight = selectionValues[selectionValues.length - 1]
         calcResult(area, diameter, weight)
         break
       default:
@@ -56,8 +46,8 @@ const BeamResult = ({
               ) : (
                 <>
                   Площадь поперечного сечения: {+result.area.toFixed(4)} см² <br />
-                  Диаметр стержней: {result.diameter} <br />
-                  Теоретический вес 1 метра: {result.weight}
+                  Диаметр стержней: {result.diameter} мм <br />
+                  Теоретический вес 1 метра: {result.weight} кг
                 </>
               )}
             </div>
