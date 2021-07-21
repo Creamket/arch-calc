@@ -8,7 +8,7 @@ const BeamMaterial = ({ concreteType, armatureType, changeValue }) => {
   }
 
   return (
-    <div className='col-4'>
+    <div className='col-12 col-sm-6 col-lg-4'>
       <div className='card bg-dark'>
         <div className='card-body'>
           <h5 className='card-title'>Материал балки</h5>

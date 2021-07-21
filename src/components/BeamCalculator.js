@@ -9,7 +9,7 @@ const BeamCalculator = ({ isExtra }) => {
   return (
     <form>
       <h2 align='center'>Расчет железобетонной балки</h2>
-      <div className='row'>
+      <div className='row g-0'>
         <BeamMaterial />
         <BeamCharacteristic />
         <Reinforcement />

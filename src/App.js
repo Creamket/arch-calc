@@ -3,7 +3,7 @@ import BeamCalculator from './components/BeamCalculator'
 
 function App() {
   return (
-    <div className='container pt-3'>
+    <div className='container-md pt-3'>
       <BeamCalculator />
     </div>
   )
