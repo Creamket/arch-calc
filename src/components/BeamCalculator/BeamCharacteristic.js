@@ -27,7 +27,7 @@ const BeamCharacteristic = ({ loadQInput, widthBInput, heightHInput, lengthLInpu
                     name='scheme'
                     onChange={inputHandler}>
                     <option value='1'>Шарнир-Шарнир</option>
-                    <option value='2'>Свободный конец</option>
+                    <option value='2'>Консоль</option>
                   </select>
                 </div>
               </div>

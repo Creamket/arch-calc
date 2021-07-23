@@ -16,22 +16,15 @@ const BeamResult = ({
   tableValues,
 }) => {
   const resultHandler = () => {
-    switch (scheme) {
-      case 1:
-        const newLoadQ = loadQ + widthB * heightH * 2500
-        const h0 = heightH - layerC
-        const M = (newLoadQ * lengthL * lengthL) / 8
-        const As = (0.9 * Rb * widthB * (1 - Math.sqrt(1 - 2 * (M / (Rb * widthB * h0 * h0)))) * h0) / Rs
-        const area = (As * 10000) / armatureN || 'error'
-        const selectionValues = tableValues.filter((row) => area <= row[armatureN])[0] || ['более 40', '—']
-        const diameter = selectionValues[0]
-        const weight = selectionValues[selectionValues.length - 1]
-        calcResult(area, diameter, weight)
-        break
-      default:
-        calcResult('default', 0, 0)
-        break
-    }
+    const newLoadQ = loadQ * 1.2 + widthB * heightH * 2500
+    const h0 = heightH - layerC
+    const M = (newLoadQ * lengthL * lengthL) / (scheme === 1 ? 8 : 2)
+    const As = (0.9 * Rb * widthB * (1 - Math.sqrt(1 - 2 * (M / (Rb * widthB * h0 * h0)))) * h0) / Rs
+    const area = (As * 10000) / armatureN || 'error'
+    const selectionValues = tableValues.filter((row) => area <= row[armatureN])[0] || ['более 40', '—']
+    const diameter = selectionValues[0]
+    const weight = selectionValues[selectionValues.length - 1]
+    calcResult(area, diameter, weight)
   }
 
   return (
@@ -76,7 +69,7 @@ const mapStateToProps = (state) => {
     Rb: state.beam.concreteType,
     Rs: state.beam.armatureType,
     result: state.beam.result,
-    armatureN: state.beam.armatureBelow,
+    armatureN: state.beam.scheme === 1 ? state.beam.armatureBelow : state.beam.armatureAbove,
     tableValues: state.beam.tableValues,
   }
 }
