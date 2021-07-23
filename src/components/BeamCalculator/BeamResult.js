@@ -21,9 +21,7 @@ const BeamResult = ({
     const M = (newLoadQ * lengthL * lengthL) / (scheme === 1 ? 8 : 2)
     const As = (0.9 * Rb * widthB * (1 - Math.sqrt(1 - 2 * (M / (Rb * widthB * h0 * h0)))) * h0) / Rs
     const area = (As * 10000) / armatureN || 'error'
-    const selectionValues = tableValues.filter((row) => area <= row[armatureN])[0] || ['более 40', '—']
-    const diameter = selectionValues[0]
-    const weight = selectionValues[selectionValues.length - 1]
+    const [diameter, , weight] = tableValues.filter((row) => area <= row[1])[0] || ['более 40', '', '—']
     calcResult(area, diameter, weight)
   }
 
