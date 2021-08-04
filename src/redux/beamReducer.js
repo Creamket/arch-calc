@@ -1,4 +1,4 @@
-import { CALC_RESULT, CHANGE_VALUE } from './types'
+import { CALC_RESULT, CHANGE_CONCRETE, CHANGE_VALUE } from './types'
 
 const initialState = {
   scheme: 1,
@@ -6,7 +6,11 @@ const initialState = {
   widthB: 0.2,
   heightH: 0.5,
   lengthL: 6,
-  concreteType: 610000,
+  concreteType: {
+    type: 'B10',
+    Rb: 610000,
+    Rbt: 57000,
+  },
   armatureType: 21900000,
   armatureBelow: 1,
   armatureAbove: 1,
@@ -32,6 +36,10 @@ const initialState = {
     area: 'default',
     diameter: 0,
     weight: 0,
+    cross: true,
+    scheme: 1,
+    height: 0,
+    length: 0,
     defaultMessage: 'Введите данные и нажмите на кнопку, чтобы увидеть результат!',
     errorMessage: 'Увеличьте поперечное сечение либо задайте другой бетон.',
   },
@@ -44,10 +52,24 @@ export const beamReducer = (state = initialState, action) => {
         ...state,
         [action.payload[0]]: action.payload[1],
       }
+    case CHANGE_CONCRETE:
+      return {
+        ...state,
+        concreteType: { type: action.payload[0], Rb: action.payload[1], Rbt: action.payload[2] },
+      }
     case CALC_RESULT:
       return {
         ...state,
-        result: { ...state.result, area: action.payload[0], diameter: action.payload[1], weight: action.payload[2] },
+        result: {
+          ...state.result,
+          area: action.payload[0],
+          diameter: action.payload[1],
+          weight: action.payload[2],
+          cross: action.payload[3],
+          scheme: action.payload[4],
+          height: action.payload[5],
+          length: action.payload[6],
+        },
       }
     default:
       return state

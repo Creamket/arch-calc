@@ -8,14 +8,19 @@ import Reinforcement from './BeamCalculator/Reinforcement'
 const BeamCalculator = ({ isExtra }) => {
   return (
     <form>
-      <h2 align='center'>Расчет железобетонной балки</h2>
       <div className='row g-0'>
-        <BeamMaterial />
-        <BeamCharacteristic />
-        <Reinforcement />
-        <ProtectiveLayer title='c' name='protectiveLayerC' />
-        <BeamResult />
-        {isExtra === true && <ProtectiveLayer title='c1' name='protectiveLayerC1' />}
+        <div className='col-12 col-md-4'>
+          <BeamMaterial />
+          <ProtectiveLayer title='c' name='protectiveLayerC' />
+        </div>
+        <div className='col-12 col-md-4 align-self-end order-last order-md-1'>
+          <BeamCharacteristic />
+          <BeamResult />
+        </div>
+        <div className='col-12 col-md-4 order-2'>
+          <Reinforcement />
+          {isExtra === true && <ProtectiveLayer title='c1' name='protectiveLayerC1' />}
+        </div>
       </div>
     </form>
   )

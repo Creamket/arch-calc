@@ -13,7 +13,7 @@ const Reinforcement = ({ changeValue, isExtra, armatureAbove, armatureBelow, sch
   }
 
   return (
-    <div className='col-12 col-sm-6 col-lg-4'>
+
       <div className='card bg-dark'>
         <div className='card-body'>
           <h5 className='card-title'>Армирование</h5>
@@ -92,7 +92,7 @@ const Reinforcement = ({ changeValue, isExtra, armatureAbove, armatureBelow, sch
           </ul>
         </div>
       </div>
-    </div>
+
   )
 }
 

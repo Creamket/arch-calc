@@ -1,11 +1,16 @@
 body {
-  background-color: #282c34;
+  background: rgb(26, 28, 31);
   font-family: 'Ubuntu', sans-serif;
-  color: aliceblue;
+  height: 100vh;
+  color: #fff;
 }
 
 .form-item {
   background-color: #212529;
-  color: aliceblue;
-  border-color: rgb(85, 93, 100);
+  color: #fff;
+  border-color: rgb(71, 78, 83);
+}
+
+::-webkit-scrollbar {
+  width: 0;
 }
