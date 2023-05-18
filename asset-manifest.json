@@ -1,22 +1,13 @@
 {
   "files": {
-    "main.css": "/arch-calc/static/css/main.6a186516.chunk.css",
-    "main.js": "/arch-calc/static/js/main.12bf0e24.chunk.js",
-    "main.js.map": "/arch-calc/static/js/main.12bf0e24.chunk.js.map",
-    "runtime-main.js": "/arch-calc/static/js/runtime-main.566f4729.js",
-    "runtime-main.js.map": "/arch-calc/static/js/runtime-main.566f4729.js.map",
-    "static/js/2.1c6b6b87.chunk.js": "/arch-calc/static/js/2.1c6b6b87.chunk.js",
-    "static/js/2.1c6b6b87.chunk.js.map": "/arch-calc/static/js/2.1c6b6b87.chunk.js.map",
-    "static/js/3.0123a90b.chunk.js": "/arch-calc/static/js/3.0123a90b.chunk.js",
-    "static/js/3.0123a90b.chunk.js.map": "/arch-calc/static/js/3.0123a90b.chunk.js.map",
+    "main.css": "/arch-calc/static/css/main.24e09061.css",
+    "main.js": "/arch-calc/static/js/main.f332f1e4.js",
     "index.html": "/arch-calc/index.html",
-    "static/css/main.6a186516.chunk.css.map": "/arch-calc/static/css/main.6a186516.chunk.css.map",
-    "static/js/2.1c6b6b87.chunk.js.LICENSE.txt": "/arch-calc/static/js/2.1c6b6b87.chunk.js.LICENSE.txt"
+    "main.24e09061.css.map": "/arch-calc/static/css/main.24e09061.css.map",
+    "main.f332f1e4.js.map": "/arch-calc/static/js/main.f332f1e4.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.566f4729.js",
-    "static/js/2.1c6b6b87.chunk.js",
-    "static/css/main.6a186516.chunk.css",
-    "static/js/main.12bf0e24.chunk.js"
+    "static/css/main.24e09061.css",
+    "static/js/main.f332f1e4.js"
   ]
 }
