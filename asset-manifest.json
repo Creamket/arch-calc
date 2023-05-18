@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/arch-calc/static/css/main.24e09061.css",
-    "main.js": "/arch-calc/static/js/main.f332f1e4.js",
+    "main.js": "/arch-calc/static/js/main.d0f74e66.js",
     "index.html": "/arch-calc/index.html",
     "main.24e09061.css.map": "/arch-calc/static/css/main.24e09061.css.map",
-    "main.f332f1e4.js.map": "/arch-calc/static/js/main.f332f1e4.js.map"
+    "main.d0f74e66.js.map": "/arch-calc/static/js/main.d0f74e66.js.map"
   },
   "entrypoints": [
     "static/css/main.24e09061.css",
-    "static/js/main.f332f1e4.js"
+    "static/js/main.d0f74e66.js"
   ]
 }
