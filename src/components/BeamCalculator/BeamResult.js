@@ -8,6 +8,7 @@ const BeamResult = ({
   heightH,
   layerC,
   loadQ,
+  safetyFactor,
   lengthL,
   Rb,
   Rbt,
@@ -18,7 +19,7 @@ const BeamResult = ({
   tableValues,
 }) => {
   const resultHandler = () => {
-    const lateralLoadQ = loadQ * 1.2 + widthB * heightH * 2500
+    const lateralLoadQ = loadQ * safetyFactor + widthB * heightH * 2500
     const crossLoadQ = (lateralLoadQ * lengthL) / 2
     const h0 = heightH - layerC - 0.007
     const crossArm = crossLoadQ <= 0.6 * Rbt * widthB * h0
@@ -57,6 +58,7 @@ const mapStateToProps = (state) => {
   return {
     scheme: state.beam.scheme,
     loadQ: state.beam.loadQ,
+    safetyFactor: state.beam.safetyFactor,
     widthB: state.beam.widthB,
     heightH: state.beam.heightH,
     lengthL: state.beam.lengthL,

@@ -1,7 +1,15 @@
 import { connect } from 'react-redux'
 import { changeValue } from '../../redux/actions'
 
-const BeamCharacteristic = ({ loadQInput, widthBInput, heightHInput, lengthLInput, scheme, changeValue }) => {
+const BeamCharacteristic = ({
+  loadQInput,
+  widthBInput,
+  heightHInput,
+  lengthLInput,
+  scheme,
+  changeValue,
+  safetyFactor,
+}) => {
   const inputHandler = (event) => {
     const value = parseFloat(event.target.value)
     changeValue([event.target.name], value)
@@ -50,6 +58,30 @@ const BeamCharacteristic = ({ loadQInput, widthBInput, heightHInput, lengthLInpu
                   />
                   <span className='input-group-text'>кг/м</span>
                 </div>
+              </div>
+            </div>
+          </li>
+          <li className='list-group-item form-item'>
+            <div className='row justify-content-between'>
+              <label htmlFor='safetyFactor' className='col-5 col-form-label col-form-label-sm'>
+                Коэффициент надежности по нагрузке
+              </label>
+              <div className='col-7'>
+                <select
+                  id='safetyFactor'
+                  value={safetyFactor}
+                  className='form-select form-select-sm'
+                  aria-label='Safety factor select'
+                  name='safetyFactor'
+                  onChange={inputHandler}>
+                  <option value='1.1'>Бетонные, ср. плотность {'>'} 1600 кг/м3</option>
+                  <option value='1.2'>
+                    Бетонные, ср. плотность {'<='} 1600 кг/м3, выполняемые в заводских условиях
+                  </option>
+                  <option value='1.3'>
+                    Бетонные, ср. плотность {'<='} 1600 кг/м3, выполняемые на строительной площадке
+                  </option>
+                </select>
               </div>
             </div>
           </li>
@@ -135,6 +167,7 @@ const mapStateToProps = (state) => {
     widthBInput: state.beam.widthB,
     heightHInput: state.beam.heightH,
     lengthLInput: state.beam.lengthL,
+    safetyFactor: state.beam.safetyFactor,
   }
 }
 

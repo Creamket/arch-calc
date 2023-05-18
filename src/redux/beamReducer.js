@@ -3,6 +3,7 @@ import { CALC_RESULT, CHANGE_CONCRETE, CHANGE_VALUE } from './types'
 const initialState = {
   scheme: 1,
   loadQ: 1400,
+  safetyFactor: 1.1,
   widthB: 0.2,
   heightH: 0.5,
   lengthL: 6,
